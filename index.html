@@ -2,14 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Belajar - Home</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <script src="js/home.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Ini Homepage</h2>
+  <!-- ✅ Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <img src="assets/Video-removebg-preview.png" alt="Video Belajar Logo" class="logo" />
+      <span class="site-name">Video Belajar</span>
+    </div>
+    <div class="header-links">
+      <button class="nav-button">Profile</button>
+      <button class="nav-button">Courses</button>
+      <button id="logout-button" class="nav-button logout">Logout</button>
+    </div>
+  </header>
 
-  </div>
+  <!-- ✅ Hero -->
+  <section class="hero">
+    <h1>Empowering your journey, one course at a time.</h1>
+  </section>
+
+  <!-- ✅ Category Filter -->
+  <section class="category-filter">
+    <button data-category="all">All</button>
+    <button data-category="Web Development">Web Development</button>
+    <button data-category="Design">Design</button>
+    <button data-category="Marketing">Marketing</button>
+    <button data-category="Finance">Finance</button>
+    <button data-category="Project Manager">Project Manager</button>
+  </section>
+
+  <!-- ✅ Featured Course -->
+  <section class="featured">
+    <h2>Featured Course</h2>
+    <div class="course-card featured-card">
+      <img src="assets/Bagas-Satriyo.jpg" alt="Bagas Satriyo" class="featured-photo">
+      <h3>Master the Art of Full-Stack Web Development</h3>
+      <p>Learn how to build responsive websites and dynamic applications from scratch.</p>
+      <div class="course-meta">
+        <div class="mentor-info">
+          <img src="assets/Bagas_Satriyo.jpg" alt="Bagas Satriyo" class="mentor-img">
+          <div>
+            <span class="author">Bagas Satriyo</span>
+            <span class="role">Senior Full-Stack Engineer at Tokopedia</span>
+          </div>
+        </div>
+        <span class="price">Rp 599.000,-</span>
+        <span class="rating"><span class="stars">★★★★★</span> 5.0 (120)</span>
+        <span class="label">Limited Slots Only</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Course List -->
+  <section class="courses">
+    <div id="course-container" class="course-grid"></div>
+  </section>
+
+  <!-- ✅ Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Learners Say</h2>
+    <div class="testimonial-container" id="testimonial-container">
+      <!-- Testimonials will be injected via JS -->
+    </div>
+  </section>
+
+  <!-- ✅ Newsletter -->
+  <section class="newsletter">
+    <h2>Don't Miss Out on Important Updates!</h2>
+    <p>Start Receiving Exclusive Learning Updates</p>
+    <form id="newsletter-form">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <img src="assets/Video-removebg-preview.png" alt="Footer Logo">
+
+    <div class="footer-right">
+      <h4>Follow us on:</h4>
+      <div class="social-icons">
+        <img src="assets/Facebook.png" alt="Facebook">
+        <img src="assets/Instagram.png" alt="Instagram">
+        <img src="assets/LinkedIn.png" alt="LinkedIn">
+      </div>
+    </div>
+    <hr />
+      <p>© 2025 Video Belajar. All rights reserved.</p>
+    </div>
+    <p class="legal">Terms & Conditions | Privacy Policy</p>
+  </footer>
 </body>
 </html>
+

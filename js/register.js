@@ -1,36 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registerForm");
+  const successMessage = document.getElementById("success-message");
+  const errorElement = document.getElementById("error-message");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // prevent actual form submission
+    event.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
 
-    // console.log("Username:", username);
-    // console.log("Password:", password);
+    errorElement.style.display = "none";
+    successMessage.style.display = "none";
 
-    is_valid = true;
-    // Check to datastore
-    let users = JSON.parse(localStorage.getItem("users") || "[]");
-    users.forEach(user => {
-      if (user.username === username) {
-        is_valid = false;
-        const errorElement = document.getElementById("error-message");
-        errorElement.textContent = "Username already exists.";
-        errorElement.style.display = "block";
-        throw new Error("Username already exists");
-      }
-    });
-
-    // Save user data
-    if (is_valid) {
-      users.push({ username: username, password: password });
-      localStorage.setItem("users", JSON.stringify(users));
-
-      alert(`Registering user: ${username}`);
-      // If successful, redirect to login page
-      window.location.href = "login.html"; 
+    if (password !== confirmPassword) {
+      errorElement.textContent = "Passwords do not match.";
+      errorElement.style.display = "block";
+      return;
     }
+
+    const newUser = { name, email, phone, password };
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const isDuplicate = users.some(user => user.email === email);
+    if (isDuplicate) {
+      errorElement.textContent = "Email is already registered.";
+      errorElement.style.display = "block";
+      return;
+    }
+
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    form.reset();
+    successMessage.textContent = "Registration successful! You can now log in.";
+    successMessage.style.display = "block";
   });
 });
+
+// 👁 Toggle password visibility
+function togglePassword(id, toggleIcon) {
+  const input = document.getElementById(id);
+  const type = input.getAttribute("type") === "password" ? "text" : "password";
+  input.setAttribute("type", type);
+  toggleIcon.classList.toggle("show");
+}

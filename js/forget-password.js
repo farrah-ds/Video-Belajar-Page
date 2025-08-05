@@ -1,49 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("forgetPasswordForm");
+  const successMessage = document.getElementById("success-message");
+  const errorMessage = document.getElementById("error-message");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // prevent actual form submission
+    event.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value.trim();
+    const newPassword = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
 
-    if (password !== confirmPassword) {
-      const errorElement = document.getElementById("error-message");
-      errorElement.textContent = "Passwords do not match.";
-      errorElement.style.display = "block";
-      return; // Stop form submission
-    }
-
-    // Check user existence
-    is_found = false;
     let users = JSON.parse(localStorage.getItem("users") || "[]");
-    users.forEach(user => {
-      if (user.username === username) {
-        is_found = true;
-      }
-    });
+    const userIndex = users.findIndex(user => user.email === email);
 
-    // Save user data
-    if (!is_found) {
-      const errorElement = document.getElementById("error-message");
-      errorElement.textContent = "User not found";
-      errorElement.style.display = "block";
-    }
-    else {
-      users = users.map(user => {
-        if (user.username === username) {
-          return { ...user, password: password }; // Change password
-        }
-        return user;
-      });
-      localStorage.setItem("users", JSON.stringify(users));
-
-
-      alert(`Password has been changed for user: ${username}`);
-      // If successful, redirect to login page
-      window.location.href = "login.html"; 
+    // Validate: user exists
+    if (userIndex === -1) {
+      errorMessage.textContent = "User not found.";
+      errorMessage.style.display = "block";
+      successMessage.style.display = "none";
+      return;
     }
 
+    // Validate: passwords match
+    if (newPassword !== confirmPassword) {
+      errorMessage.textContent = "Passwords do not match.";
+      errorMessage.style.display = "block";
+      successMessage.style.display = "none";
+      return;
+    }
+
+    // Update password
+    users[userIndex].password = newPassword;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Show success, hide errors
+    errorMessage.style.display = "none";
+    successMessage.style.display = "block";
+
+    // Optional: redirect after success (e.g., to login page)
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 2000);
   });
 });
+
+// 👁 Toggle password visibility
+function togglePassword(id, toggleIcon) {
+  const input = document.getElementById(id);
+  const type = input.getAttribute("type") === "password" ? "text" : "password";
+  input.setAttribute("type", type);
+  toggleIcon.classList.toggle("show"); // optional styling toggle
+}
+

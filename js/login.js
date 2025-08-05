@@ -1,42 +1,76 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
+  const successMessage = document.getElementById("success-message");
+  const errorMessage = document.getElementById("error-message");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // prevent actual form submission
+    event.preventDefault(); // Prevent form from reloading
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    let is_found = false;
-    let error_type = "not_found";
+    let isFound = false;
+    let errorType = "not_found";
     let users = JSON.parse(localStorage.getItem("users") || "[]");
+
     users.forEach(user => {
-      if (user.username === username) {
+      if (user.email === email) {
         if (user.password === password) {
-          is_found = true;
+          isFound = true;
         } else {
-          error_type = "invalid";
+          errorType = "invalid";
         }
       }
     });
 
-    // Save user data
-    if (is_found) {
-      alert(`Logging in as user: ${username}`);
-      // If successful, redirect to login page
-      window.location.href = "index.html"; 
-    }
-    else {
-      if (error_type === "not_found") {
-        const errorElement = document.getElementById("error-message");
-        errorElement.textContent = "User not found.";
-        errorElement.style.display = "block";
-      } else if (error_type === "invalid") {
-        const errorElement = document.getElementById("error-message");
-        errorElement.textContent = "Invalid password.";
-        errorElement.style.display = "block";
-      }
-    }
+    if (isFound) {
+      // Hide error, show success
+      errorMessage.style.display = "none";
+      successMessage.textContent = "Welcome! Ready to learn something new?";
+      successMessage.style.display = "block";
 
-    });
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+    } else {
+      // Show error message
+      successMessage.style.display = "none";
+      errorMessage.textContent =
+        errorType === "not_found"
+          ? "User not found."
+          : "Invalid password.";
+      errorMessage.style.display = "block";
+    }
   });
+});
+
+// 🔒 Toggle password visibility
+function togglePassword(id, toggleIcon) {
+  const input = document.getElementById(id);
+  const type = input.getAttribute("type") === "password" ? "text" : "password";
+  input.setAttribute("type", type);
+  toggleIcon.classList.toggle("show");
+}
+
+// 🔐 Google Sign-In handler
+function handleCredentialResponse(response) {
+  const token = response.credential;
+  const payload = JSON.parse(atob(token.split('.')[1]));
+
+  console.log("Google User:", payload);
+
+  // Show success message
+  const successMessage = document.getElementById("success-message");
+  successMessage.textContent = `Welcome, ${payload.name}! Ready to learn something new?`;
+  successMessage.style.display = "block";
+
+  // Store to localStorage (optional)
+  localStorage.setItem("googleUser", JSON.stringify(payload));
+
+  // Redirect after short delay
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 2000);
+}
+

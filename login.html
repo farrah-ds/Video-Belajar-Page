@@ -1,45 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <script src="js/login.js"></script>
-
   <div class="container">
+    <h1><img src="assets/Video-removebg-preview.png" class="logo" /></h1>
     <h2>Login</h2>
-    <form id="loginForm">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+    <!-- ✅ Success message above the form -->
+    <p id="success-message" class="success-message"></p>
+
+    <!-- ✅ FORM: only contains email + password + login button -->
+    <form id="loginForm">
+      <label for="email" class="required">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="example@email.com"
+        pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+      />
+
+      <label for="password" class="required">Password</label>
+      <div class="password-field">
+        <input type="password" id="password" name="password" required />
+        <span class="toggle-password" onclick="togglePassword('password', this)"></span>
+      </div>
 
       <button type="submit" class="submit-button">Login</button>
     </form>
 
-    <label for="go-to-register"> 
-      Do not have an account? 
-      <a href="register.html">
-        <button>Register</button>
-      </a>
+    <!-- ✅ Navigation Links -->
+    <label>
+      Don't have an account?
+      <a href="register.html"><button type="button">Register</button></a>
     </label>
 
-    <label for="go-to-forget-password"> 
-      Do not remember your password? 
-      <a href="forget-password.html">
-        <button>Forget Password</button>
-      </a>
+    <div class="divider"><span>or</span></div>
+
+    <!-- ✅ Google Sign-In -->
+    <div id="g_id_onload"
+         data-client_id="243730593042-6adfuu59hphnth5hi1d6jih3441v7aho.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="signin_with"
+         data-size="large"
+         data-logo_alignment="left">
+    </div>
+
+    <label>
+      Don't remember your password?
+      <a href="forget-password.html"><button type="button">Forget Password</button></a>
     </label>
 
     <!-- Error message -->
     <p id="error-message" class="error-message"></p>
-
   </div>
+
+  <!-- JS -->
+  <script src="js/login.js"></script>
 </body>
 </html>
+
 
 <!-- tag -->
