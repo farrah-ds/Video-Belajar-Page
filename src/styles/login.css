@@ -1,0 +1,164 @@
+/* Background */
+.login-page {
+  background-color: #fff8e7; /* soft yellow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Logo */
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.login-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 360px;
+  width: 100%;
+}
+
+/* Titles */
+.title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.required {
+  color: red;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 35px;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.forgot-password a {
+  font-size: 0.85rem;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+/* Buttons */
+.btn-login {
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-register {
+  background: white;
+  color: #22c55e;
+  font-weight: bold;
+  border: 1px solid #22c55e;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+  margin: 15px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+/* Google Button */
+.google-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  background: white;
+  cursor: pointer;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.google-login img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,33 @@
+.course-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-image {
+  width: 100%;
+  height: auto;
+}
+
+.course-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.course-subtitle {
+  color: #555;
+}
+
+.mentor-photo {
+  width: 40px;
+  height: 40px;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}

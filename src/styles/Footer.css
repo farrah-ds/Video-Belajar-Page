@@ -1,0 +1,36 @@
+.footer {
+  background-color: #2d2d2d;
+}
+
+.footer-logo {
+  width: 150px;
+}
+
+.footer-tagline {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.footer-category, .footer-company, .footer-community {
+  margin-right: 30px;
+}
+
+.footer-category-title,
+.footer-company-title,
+.footer-community-title {
+  font-weight: bold;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  font-size: 0.875rem;
+  margin-top: 20px;
+}

@@ -1,0 +1,159 @@
+.register-page {
+  background-color: #fff8dc; /* Soft yellow background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 180px;
+  margin-bottom: 15px;
+}
+
+.register-container {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 420px;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.required {
+  color: red;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-prefix {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-register {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.btn-register:hover {
+  background-color: #ff9900;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #888;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.google-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.google-login img {
+  width: 18px;
+}
+
+.redirect-text {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.link {
+  color: #22c55e;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 6px;
+  vertical-align: middle;
+  border-radius: 2px;
+}

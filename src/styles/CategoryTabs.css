@@ -1,0 +1,33 @@
+.category-tabs-container {
+  margin-top: 2rem;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-tab {
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.category-tab:hover {
+  background-color: #f1f1f1;
+}
+
+.category-tab.active {
+  background-color: #22c55e; /* Green */
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+}
